@@ -1,0 +1,567 @@
+{
+  "info": {
+    "_postman_id": "1ec89116-1840-4fec-a143-0523e8fef3b2",
+    "name": "Payment Documentation",
+    "description": "# Introduction\nThis API manages the payment references for adding or removing a payment method. It also manages the validation of a user purchasing an item.\n\n# Users\nThe users of this API are the Admin UI (The Admin), and other internal systems of CU Sports.\nThese include: \n\nReceive email notifications\n\nSet inventory levels\n\n#Inputs and Parameters\n\nUser\n\n    id: integer\n\n    name: string\n\n    tag: string\n\nPayment Method\n\n    paymentType: string\n\nError\n    \n    code: integer\n\n    message: string\n \n#Return Codes\nGet\n\n'200'\n\n    A string stating if the given user, payment method, and price is logged as a valid purchase\n\n'400'\n\n    Bad Request\n\n\nPost\n\n'201'\n\n    Request Successfully Completed and New Payment Type was Created/Added\n\n'400'\n\n    Syntax Error - Payment Method not Found - Could Not be Added\n\n'409'\n\n    Conflict - Payment Method Previously Added. Please Change Method\n\n'500'\n\n    Unexpected Error - Payment Method Could Not be Added\n\n'503'\n\n    Service Unavailable - Try Again Later\n\nDelete\n\n'201'\n\n    Request Completed Successfully - Payment Type was Deleted",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "add Payment Metod/user/{user ID}",
+      "item": [
+        {
+          "name": "payment/{payment Method}",
+          "item": [],
+          "_postman_id": "5b39670b-3be8-4411-a950-68a4c835422b",
+          "_postman_isSubFolder": true
+        }
+      ],
+      "_postman_id": "06ba951b-5e82-47dc-8aeb-64b272204285"
+    },
+    {
+      "name": "Validate an item purchase",
+      "_postman_id": "85ab0617-c013-42ef-842a-ef1c07271976",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/purchaseItem/user/:userID/payment/:paymentMethod/price/:price",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "purchaseItem",
+            "user",
+            ":userID",
+            "payment",
+            ":paymentMethod",
+            "price",
+            ":price"
+          ],
+          "variable": [
+            {
+              "key": "userID",
+              "type": "any"
+            },
+            {
+              "key": "paymentMethod",
+              "type": "any"
+            },
+            {
+              "key": "price",
+              "type": "any"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "id": "5b3c8c6c-4d55-4c33-bcff-ea6cdca15b4e",
+          "name": "Im a Teapot",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/purchaseItem/user/:userID/payment/:paymentMethod/price/:price",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "purchaseItem",
+                "user",
+                ":userID",
+                "payment",
+                ":paymentMethod",
+                "price",
+                ":price"
+              ],
+              "variable": [
+                {
+                  "key": "userID"
+                },
+                {
+                  "key": "paymentMethod"
+                },
+                {
+                  "key": "price"
+                }
+              ]
+            }
+          },
+          "status": "I'm a teapot (RFC 2324)",
+          "code": 418,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n \"code\": -25449831,\n \"message\": \"commodo anim ipsum\"\n}"
+        },
+        {
+          "id": "6085904c-3f43-4dd5-a43a-016a15371c4d",
+          "name": "Unauthorized. Please Log in to Make This Purchase.",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/purchaseItem/user/:userID/payment/:paymentMethod/price/:price",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "purchaseItem",
+                "user",
+                ":userID",
+                "payment",
+                ":paymentMethod",
+                "price",
+                ":price"
+              ],
+              "variable": [
+                {
+                  "key": "userID"
+                },
+                {
+                  "key": "paymentMethod"
+                },
+                {
+                  "key": "price"
+                }
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n \"code\": -25449831,\n \"message\": \"commodo anim ipsum\"\n}"
+        },
+        {
+          "id": "9df981ec-f9db-41d7-bd8c-62f7f77f8b4c",
+          "name": "Bad Gateway, cannot reach Server",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/purchaseItem/user/:userID/payment/:paymentMethod/price/:price",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "purchaseItem",
+                "user",
+                ":userID",
+                "payment",
+                ":paymentMethod",
+                "price",
+                ":price"
+              ],
+              "variable": [
+                {
+                  "key": "userID"
+                },
+                {
+                  "key": "paymentMethod"
+                },
+                {
+                  "key": "price"
+                }
+              ]
+            }
+          },
+          "status": "Bad Gateway",
+          "code": 502,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n \"code\": -25449831,\n \"message\": \"commodo anim ipsum\"\n}"
+        },
+        {
+          "id": "adacf9c4-46ea-416c-b8bd-0710378d31ee",
+          "name": "Gateway Timeout - Could not connect to server.",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/purchaseItem/user/:userID/payment/:paymentMethod/price/:price",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "purchaseItem",
+                "user",
+                ":userID",
+                "payment",
+                ":paymentMethod",
+                "price",
+                ":price"
+              ],
+              "variable": [
+                {
+                  "key": "userID"
+                },
+                {
+                  "key": "paymentMethod"
+                },
+                {
+                  "key": "price"
+                }
+              ]
+            }
+          },
+          "status": "Gateway Timeout",
+          "code": 504,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n \"code\": -25449831,\n \"message\": \"commodo anim ipsum\"\n}"
+        },
+        {
+          "id": "b6647e13-4f59-4192-aac4-074d14ba5e22",
+          "name": "Syntax Error - User and payment method not found.",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/purchaseItem/user/:userID/payment/:paymentMethod/price/:price",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "purchaseItem",
+                "user",
+                ":userID",
+                "payment",
+                ":paymentMethod",
+                "price",
+                ":price"
+              ],
+              "variable": [
+                {
+                  "key": "userID"
+                },
+                {
+                  "key": "paymentMethod"
+                },
+                {
+                  "key": "price"
+                }
+              ]
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n \"code\": -25449831,\n \"message\": \"commodo anim ipsum\"\n}"
+        },
+        {
+          "id": "cc7e4ebb-c752-466c-a64e-0f573d595e03",
+          "name": "Service Unavailable - Try Again Later",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/purchaseItem/user/:userID/payment/:paymentMethod/price/:price",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "purchaseItem",
+                "user",
+                ":userID",
+                "payment",
+                ":paymentMethod",
+                "price",
+                ":price"
+              ],
+              "variable": [
+                {
+                  "key": "userID"
+                },
+                {
+                  "key": "paymentMethod"
+                },
+                {
+                  "key": "price"
+                }
+              ]
+            }
+          },
+          "status": "Service Unavailable",
+          "code": 503,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n \"code\": -25449831,\n \"message\": \"commodo anim ipsum\"\n}"
+        },
+        {
+          "id": "fc63306f-aa41-45a5-9dd0-46b2f1c5cfb2",
+          "name": "OK",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/purchaseItem/user/:userID/payment/:paymentMethod/price/:price",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "purchaseItem",
+                "user",
+                ":userID",
+                "payment",
+                ":paymentMethod",
+                "price",
+                ":price"
+              ],
+              "variable": [
+                {
+                  "key": "userID"
+                },
+                {
+                  "key": "paymentMethod"
+                },
+                {
+                  "key": "price"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "description": {
+                "content": "",
+                "type": "text/plain"
+              },
+              "key": "x-next",
+              "value": "dolore"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "\"dolore\""
+        }
+      ]
+    },
+    {
+      "name": "Returns all the payment methods of the given user",
+      "_postman_id": "b472ecf7-8256-4208-a9cb-668e73e27278",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/addPaymentMethod/user/:userID",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "addPaymentMethod",
+            "user",
+            ":userID"
+          ],
+          "variable": [
+            {
+              "id": "d7b9d8de-bdf8-4b14-b335-f2d9f0c3161d",
+              "key": "userID",
+              "value": "id,-34353025,name,proident dolor consequat,tag,ex eu",
+              "type": "string",
+              "description": "(Required) userID"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add a payment type to a user",
+      "_postman_id": "0a298983-16e2-4e7d-adbb-fcba1308d97d",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "applicatoin/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"paymentType\": \"anim dolor irure adipisicing\"\n}",
+          "options": {
+            "raw": {}
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/addPaymentMethod/user/:userID/payment/:paymentMethod",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "addPaymentMethod",
+            "user",
+            ":userID",
+            "payment",
+            ":paymentMethod"
+          ],
+          "variable": [
+            {
+              "id": "96d21207-7897-4e49-907f-c36dd25cf172",
+              "key": "userID",
+              "value": "id,-34353025,name,proident dolor consequat,tag,ex eu",
+              "type": "string",
+              "description": "(Required) "
+            },
+            {
+              "id": "7d8af637-5b51-4160-b705-8f0d4a8a0a51",
+              "key": "paymentMethod",
+              "value": "paymentType,anim dolor irure adipisicing",
+              "type": "string",
+              "description": "(Required) "
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "deletePayment",
+      "_postman_id": "5628e850-b8cf-48e1-a83b-94eafd69b474",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/addPaymentMethod/user/:userID/payment/:paymentMethod",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "addPaymentMethod",
+            "user",
+            ":userID",
+            "payment",
+            ":paymentMethod"
+          ],
+          "variable": [
+            {
+              "id": "283b3fdb-5a3b-4c8d-ac25-01fd84ef2054",
+              "key": "userID",
+              "value": "id,-34353025,name,proident dolor consequat,tag,ex eu",
+              "type": "string",
+              "description": "(Required) "
+            },
+            {
+              "id": "86d49a3a-03dd-44d7-8468-a1f0b4392e25",
+              "key": "paymentMethod",
+              "value": "paymentType,anim dolor irure adipisicing",
+              "type": "string",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "description": "Deletes a selected payment method"
+      },
+      "response": [
+        {
+          "id": "841a5671-991b-4326-9f0e-958d4dca1b8d",
+          "name": "Request Completed Successfully - Payment Type was Deleted",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/addPaymentMethod/user/:userID/payment/:paymentMethod",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "addPaymentMethod",
+                "user",
+                ":userID",
+                "payment",
+                ":paymentMethod"
+              ],
+              "variable": [
+                {
+                  "key": "userID"
+                },
+                {
+                  "key": "paymentMethod"
+                }
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "Text",
+          "header": [
+            {
+              "description": {
+                "content": "A link to the next page of responses",
+                "type": "text/plain"
+              },
+              "key": "x-next",
+              "value": "do"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "responseTime": null,
+          "body": "{\n \"id\": -28678598,\n \"name\": \"dolore proident\",\n \"tag\": \"dolore Excepteur\"\n}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "id": "baseUrl",
+      "key": "baseUrl",
+      "value": "https://cusports.com",
+      "type": "string"
+    }
+  ]
+}
